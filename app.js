@@ -1,8 +1,13 @@
 import { createClient } from '@supabase/supabase-js';
 
+// Supabase configuration
 const supabaseUrl = 'https://gxoanfxlfuyiksrilqxx.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4b2FuZnhsZnV5aWtzcmlscXh4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAzMDQ4NzUsImV4cCI6MjA1NTg4MDg3NX0.OQ7l44_HDXcc8J4N8NyKbSCJqCoKrsJij6dwjJ_TMVY';
 const supabase = createClient(supabaseUrl, supabaseKey);
+
+// Attach functions to the global scope
+window.login = login;
+window.register = register;
 
 // Function to log in a user
 async function login() {
@@ -17,6 +22,21 @@ async function login() {
   } else {
     alert("Login successful!");
     checkAuth(); // Update UI based on authentication state
+  }
+}
+
+// Function to register a user
+async function register() {
+  console.log("Register function called");
+  const email = document.getElementById("register-email").value;
+  const password = document.getElementById("register-password").value;
+
+  const { user, error } = await supabase.auth.signUp({ email, password });
+  if (error) {
+    console.error("Registration error: ", error);
+    alert("Error: " + error.message);
+  } else {
+    alert("Registration successful! Please check your email to confirm.");
   }
 }
 

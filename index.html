@@ -3,14 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome</title>
+  <title>Portfolio</title>
   <link rel="stylesheet" href="styles.css">
-  <!-- Include Supabase JS library -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script> <!-- Include Supabase -->
-    <script src="app.js" defer></script>
 </head>
 <body>
-  <!-- Navbar -->
   <nav id="navbar">
     <a href="index.html">Welcome</a>
     <a href="projects.html">Projects</a>
@@ -18,31 +14,36 @@
     <a id="profile-link" href="https://github.com/Numpkens" target="_blank">GitHub</a>
   </nav>
 
-  <!-- Welcome Section -->
-  <section id="welcome-section">
-    <h1>Welcome to David's Portfolio</h1>
-    <p>Hello and thank you for visiting.</p> 
-    <p>I'm a web developer passionate about creating awesome projects!</p>
-  </section>
+  <!-- Login Form -->
+  <div id="login-form">
+    <h2>Login</h2>
+    <input type="email" id="login-email" placeholder="Email" required>
+    <input type="password" id="login-password" placeholder="Password" required>
+    <button onclick="login()">Login</button>
+  </div>
 
-  <!-- Authentication Section -->
-  <section id="auth-section">
-    <h2>Authentication</h2>
-    <div>
-      <h3>Register</h3>
-      <input type="email" id="register-email" placeholder="Email" required>
-      <input type="password" id="register-password" placeholder="Password" required>
-      <button onclick="register()">Register</button>
-    </div>
-    <div>
-      <h3>Login</h3>
-      <input type="email" id="login-email" placeholder="Email" required>
-      <input type="password" id="login-password" placeholder="Password" required>
-      <button onclick="login()">Login</button>
-    </div>
-  </section>
+  <!-- Register Form -->
+  <div id="register-form">
+    <h2>Register</h2>
+    <input type="email" id="register-email" placeholder="Email" required>
+    <input type="password" id="register-password" placeholder="Password" required>
+    <button onclick="register()">Register</button>
+  </div>
 
-  <!-- JavaScript -->
-  <script src="app.js"></script>
+  <!-- Blog Form (Hidden by Default) -->
+  <form id="blog-form" style="display: none;" onsubmit="submitPost(event)">
+    <h2>Create a New Post</h2>
+    <label for="post-title">Title:</label>
+    <input type="text" id="post-title" required>
+    <label for="post-content">Content:</label>
+    <textarea id="post-content" rows="5" required></textarea>
+    <button type="submit">Publish</button>
+  </form>
+
+  <!-- Container for Blog Posts -->
+  <div id="blog-posts"></div>
+
+  <!-- Load app.js as a module -->
+  <script type="module" src="app.js"></script>
 </body>
 </html>
