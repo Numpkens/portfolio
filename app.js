@@ -1,22 +1,23 @@
-const { createClient } = require('@supabase/supabase-js'); // Ensure you import the library correctly
-const supabaseUrl = 'YOUR_SUPABASE_URL'; // Replace with your Supabase URL
-const supabaseKey = 'YOUR_SUPABASE_ANON_KEY'; // Replace with your Supabase Anon Key
-const supabase = createClient(supabaseUrl, supabaseKey); // Initialize supabase
+
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = 'https://gxoanfxlfuyiksrilqxx.supabase.co'
+const supabaseKey = process.env.SUPABASE_KEY
+const supabase = createClient(supabaseUrl, supabaseKey)
 
 // Function to log in a user
 async function login() {
-  console.log("Login function called"); // Debugging line
+  console.log("Login function called");
   const email = document.getElementById("login-email").value;
   const password = document.getElementById("login-password").value;
 
   const { user, error } = await supabase.auth.signIn({ email, password });
   if (error) {
-    console.error("Login error: ", error); // Log the error
+    console.error("Login error: ", error);
     alert("Error: " + error.message);
   } else {
     alert("Login successful!");
-    document.getElementById("login-form").style.display = "none"; // Hide login form
-    document.getElementById("blog-form").style.display = "block"; // Show blog form
+    checkAuth(); // Update UI based on authentication state
   }
 }
 
@@ -60,6 +61,26 @@ async function displayPosts() {
     `;
     blogPostsContainer.appendChild(postElement);
   });
+}
+
+// Function to handle blog form submission
+async function submitPost(event) {
+  event.preventDefault();
+  const title = document.getElementById("post-title").value;
+  const content = document.getElementById("post-content").value;
+
+  const { data, error } = await supabase
+    .from('blogPosts')
+    .insert([{ title, content, user_id: supabase.auth.user().id }]);
+
+  if (error) {
+    console.error("Error adding post: ", error);
+    alert("Error: " + error.message);
+  } else {
+    alert("Post published successfully!");
+    document.getElementById("blog-form").reset();
+    displayPosts(); // Refresh the list of posts
+  }
 }
 
 // Call displayPosts on page load to show all posts
