@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Include Supabase JS library -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav id="navbar">
+    <a href="index.html">Welcome</a>
+    <a href="projects.html">Projects</a>
+    <a href="blog.html">Blog</a>
+    <a id="profile-link" href="https://github.com/Numpkens" target="_blank">GitHub</a>
+  </nav>
+
+  <!-- Welcome Section -->
+  <section id="welcome-section">
+    <h1>Welcome to David's Portfolio</h1>
+    <p>Hello and thank you for visiting.</p> 
+    <p>I'm a web developer passionate about creating awesome projects!</p>
+  </section>
+
+  <!-- Authentication Section -->
+  <section id="auth-section">
+    <h2>Authentication</h2>
+    <div>
+      <h3>Register</h3>
+      <input type="email" id="register-email" placeholder="Email" required>
+      <input type="password" id="register-password" placeholder="Password" required>
+      <button onclick="register()">Register</button>
+    </div>
+    <div>
+      <h3>Login</h3>
+      <input type="email" id="login-email" placeholder="Email" required>
+      <input type="password" id="login-password" placeholder="Password" required>
+      <button onclick="login()">Login</button>
+    </div>
+  </section>
+
+  <!-- JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>
