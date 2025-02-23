@@ -1,9 +1,8 @@
+import { createClient } from '@supabase/supabase-js';
 
-import { createClient } from '@supabase/supabase-js'
-
-const supabaseUrl = 'https://gxoanfxlfuyiksrilqxx.supabase.co'
-const supabaseKey = process.env.SUPABASE_KEY
-const supabase = createClient(supabaseUrl, supabaseKey)
+const supabaseUrl = 'https://gxoanfxlfuyiksrilqxx.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4b2FuZnhsZnV5aWtzcmlscXh4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAzMDQ4NzUsImV4cCI6MjA1NTg4MDg3NX0.OQ7l44_HDXcc8J4N8NyKbSCJqCoKrsJij6dwjJ_TMVY';
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Function to log in a user
 async function login() {
