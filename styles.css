@@ -1,84 +1,310 @@
-/* Basic Reset */
-* {
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
   line-height: 1.6;
-  padding: 20px;
-  background-color: #f4f4f4;
+  background-color: #1a1a1a; /* Dark background */
+  color: #e0e0e0; /* Light text */
 }
 
-/* Navbar Styles */
+/* Navbar */
 #navbar {
-  display: flex;
-  justify-content: space-around;
-  background-color: #333;
-  padding: 10px;
-  margin-bottom: 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #1a1a1a; /* Dark background */
+  padding: 15px 0;
+  text-align: center;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 #navbar a {
-  color: white;
+  color: #4CAF50; /* Green */
   text-decoration: none;
+  margin: 0 20px;
+  font-size: 18px;
+  transition: color 0.3s ease;
 }
 
 #navbar a:hover {
-  text-decoration: underline;
+  color: #2196F3; /* Blue */
 }
 
-/* Form Styles */
-#login-form, #register-form, #blog-form {
-  background: white;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Welcome Section */
+#welcome-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1a1a1a, #2E7D32); /* Dark to green gradient */
+  text-align: center;
+  color: #e0e0e0; /* Light text */
 }
 
-input, textarea, button {
-  width: 100%;
-  padding: 10px;
+#welcome-section h1 {
+  font-size: 3rem;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  animation: fadeIn 2s ease-in-out;
 }
 
-button {
-  background-color: #333;
+#welcome-section p {
+  font-size: 1.5rem;
+  animation: fadeIn 3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Projects Section */
+#projects {
+  padding: 80px 20px;
+  background-color: #1a1a1a; /* Dark background */
+  text-align: center;
+}
+
+#projects h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #4CAF50; /* Green */
+}
+
+.project-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.project-tile {
+  margin: 20px;
+  padding: 20px;
+  background-color: #2E7D32; /* Dark green */
+  border: 1px solid #4CAF50; /* Green */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  max-width: 300px; /* Set a max width for project tiles */
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-tile:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.project-tile img {
+  width: 100%; /* Make the image responsive */
+  border-radius: 10px 10px 0 0; /* Round the top corners */
+}
+
+.project-tile h3 {
+  font-size: 1.5rem;
+  margin: 10px 0;
+  color: #e0e0e0; /* Light text */
+}
+
+.project-tile p {
+  font-size: 1rem;
+  color: #e0e0e0; /* Light text */
+}
+
+.project-tile a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #2196F3; /* Blue */
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.project-tile a:hover {
+  background-color: #64B5F6; /* Lighter blue */
+}
+
+
+/* Blog Section */
+#blog {
+  padding: 80px 20px;
+  background-color: #2E7D32; /* Dark green */
+  text-align: center;
+}
+
+#blog h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #e0e0e0; /* Light text */
+}
+
+#login-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #1a1a1a; /* Dark background */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: left;
+}
+
+#login-form label {
+  display: block;
+  margin: 10px 0 5px;
+  font-size: 1.2rem;
+  color: #e0e0e0; /* Light text */
+}
+
+#login-form input {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #4CAF50; /* Green */
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #1a1a1a; /* Dark background */
+  color: #e0e0e0; /* Light text */
+}
+
+#login-form button {
+  padding: 10px 20px;
+  background-color: #2196F3; /* Blue */
   color: white;
   border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #555;
+#login-form button:hover {
+  background-color: #64B5F6; /* Lighter blue */
 }
 
-/* Blog Posts Styles */
+#blog-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #1a1a1a; /* Dark background */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: left;
+}
+
+#blog-form label {
+  display: block;
+  margin: 10px 0 5px;
+  font-size: 1.2rem;
+  color: #e0e0e0; /* Light text */
+}
+
+#blog-form input,
+#blog-form textarea {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #4CAF50; /* Green */
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #1a1a1a; /* Dark background */
+  color: #e0e0e0; /* Light text */
+}
+
+#blog-form textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+#blog-form button {
+  padding: 10px 20px;
+  background-color: #2196F3; /* Blue */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#blog-form button:hover {
+  background-color: #64B5F6; /* Lighter blue */
+}
+
 #blog-posts {
-  margin-top: 20px;
+  max-width: 800px;
+  margin: 40px auto;
 }
 
 .blog-post {
-  background: white;
+  margin: 20px 0;
   padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #1a1a1a; /* Dark background */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.blog-post h2 {
+.blog-post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.blog-post h3 {
+  font-size: 1.8rem;
   margin-bottom: 10px;
+  color: #e0e0e0; /* Light text */
 }
 
 .blog-post p {
-  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: #e0e0e0; /* Light text */
+  line-height: 1.6;
 }
 
-.blog-post small {
-  color: #777;
+.blog-post button {
+  padding: 8px 16px;
+  background-color: #2196F3; /* Blue */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.blog-post button:hover {
+  background-color: #64B5F6; /* Lighter blue */
+}
+
+/* Media Query */
+@media (max-width: 768px) {
+  #navbar a {
+    font-size: 16px;
+    margin: 0 10px;
+  }
+
+  #welcome-section h1 {
+    font-size: 2rem;
+  }
+
+  #welcome-section p {
+    font-size: 1.2rem;
+  }
+
+  #projects h2,
+  #blog h2 {
+    font-size: 2rem;
+  }
+
+  .project-tile,
+  #blog-form,
+  #login-form {
+    max-width: 90%;
+  }
 }
