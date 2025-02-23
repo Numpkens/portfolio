@@ -18,31 +18,28 @@
   </nav>
 
   <!-- Blog Section -->
-  <section id="blog">
-    <h2>My Blog</h2>
+<section id="blog">
+  <h2>My Blog</h2>
 
-    <!-- Login Form -->
-    <div id="login-form">
-      <h3>Login</h3>
-      <label for="login-email">Email:</label>
-      <input type="email" id="login-email" placeholder="Email" required>
-      <label for="login-password">Password:</label>
-      <input type="password" id="login-password" placeholder="Password" required>
-      <button onclick="login()">Login</button>
-    </div>
+  <!-- Login Form (Hidden by Default) -->
+  <div id="login-form" style="display: none;">
+    <input type="email" id="login-email" placeholder="Email" required>
+    <input type="password" id="login-password" placeholder="Password" required>
+    <button id="login-button" onclick="login()">Login</button>
+  </div>
 
-    <!-- Blog Form (Hidden by Default) -->
-    <form id="blog-form" style="display: none;" onsubmit="submitPost(event)">
-      <label for="post-title">Title:</label>
-      <input type="text" id="post-title" required>
-      <label for="post-content">Content:</label>
-      <textarea id="post-content" rows="5" required></textarea>
-      <button type="submit">Publish</button>
-    </form>
+  <!-- Blog Form (Hidden by Default) -->
+  <form id="blog-form" style="display: none;" onsubmit="submitPost(event)">
+    <label for="post-title">Title:</label>
+    <input type="text" id="post-title" required>
+    <label for="post-content">Content:</label>
+    <textarea id="post-content" rows="5" required></textarea>
+    <button type="submit">Publish</button>
+  </form>
 
-    <!-- Container for Blog Posts -->
-    <div id="blog-posts"></div>
-  </section>
+  <!-- Container for Blog Posts -->
+  <div id="blog-posts"></div>
+</section>
 
   <!-- JavaScript -->
   <script src="app.js"></script>

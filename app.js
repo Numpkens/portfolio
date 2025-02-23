@@ -6,38 +6,35 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Function to log in a user
 async function login() {
+  console.log("Login function called"); // Debugging line
   const email = document.getElementById("login-email").value;
   const password = document.getElementById("login-password").value;
 
   const { user, error } = await supabase.auth.signIn({ email, password });
   if (error) {
+    console.error("Login error: ", error); // Log the error
     alert("Error: " + error.message);
   } else {
     alert("Login successful!");
     document.getElementById("login-form").style.display = "none"; // Hide login form
     document.getElementById("blog-form").style.display = "block"; // Show blog form
-    displayPosts(); // Load existing posts
   }
 }
 
-// Function to submit a new blog post
-async function submitPost(event) {
-  event.preventDefault(); // Prevent page reload
-  const title = document.getElementById("post-title").value;
-  const content = document.getElementById("post-content").value;
-
-  const { data, error } = await supabase
-    .from('blogPosts')
-    .insert([{ title, content, user_id: supabase.auth.user().id }]); // Store user ID
-
-  if (error) {
-    alert("Error adding post: " + error.message);
+// Function to check if user is logged in
+async function checkAuth() {
+  const { user, error } = await supabase.auth.getUser();
+  if (user) {
+    document.getElementById("login-form").style.display = "none"; // Hide login form
+    document.getElementById("blog-form").style.display = "block"; // Show blog form
   } else {
-    alert("Blog post published successfully!");
-    displayPosts(); // Refresh the posts
-    document.getElementById("blog-form").reset(); // Clear the form
+    document.getElementById("login-form").style.display = "block"; // Show login form
+    document.getElementById("blog-form").style.display = "none"; // Hide blog form
   }
 }
+
+// Call checkAuth on page load to check if user is logged in
+checkAuth();
 
 // Function to display blog posts
 async function displayPosts() {
@@ -65,3 +62,6 @@ async function displayPosts() {
     blogPostsContainer.appendChild(postElement);
   });
 }
+
+// Call displayPosts on page load to show all posts
+displayPosts();

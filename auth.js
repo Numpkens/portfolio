@@ -1,6 +1,3 @@
-// Hardcoded password (for demonstration purposes only)
-const PASSWORD = "tune341:sateen";
-
 // Function to check login
 function login() {
   const password = document.getElementById("password").value;
